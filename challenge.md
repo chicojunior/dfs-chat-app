@@ -1,4 +1,4 @@
-**### Coding Challenge (Angular or React/Nodejs)**
+### Coding Challenge (Angular or React/Nodejs)
 
 Hello dear candidate,
 
