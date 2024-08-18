@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { DialogCustomerServiceComponent } from './dialog-customer-service/dialog-customer-service.component';
+import { DialogCustomerServiceComponent } from './components/dialog-customer-service/dialog-customer-service.component';
 
 @Component({
   selector: 'app-root',
