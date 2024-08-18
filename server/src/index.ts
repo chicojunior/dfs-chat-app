@@ -1,11 +1,13 @@
 import express, { Request, Response } from 'express';
-import asisstantRoutes from './routes/assistants';
+import assistantRoutes from './routes/assistants';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use('/assistants', asisstantRoutes);
+app.use(cors());
+app.use('/assistants', assistantRoutes);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello, TypeScript Express!');

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  fetchData(): Observable<string> {
-    return this.http.get<string>('https://api.example.com/data');
+  fetchData(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/assistants');
   }
 }
