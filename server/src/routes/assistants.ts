@@ -1,17 +1,26 @@
 import { Router, Request, Response } from 'express';
-import { Assistant } from '../model/model';
+import { Assistant } from '../model/assistant';
 
 const router = Router();
 let assistants: Assistant[] = [
-  { id: 1, name: 'Bob' },
-  { id: 2, name: 'Alice' },
-  { id: 3, name: 'John' },
-  { id: 4, name: 'Eva' },
+  { id: 1, name: 'Bob', isAvailable: true },
+  { id: 2, name: 'Alice', isAvailable: false },
+  { id: 3, name: 'John', isAvailable: true },
+  { id: 4, name: 'Eva', isAvailable: true },
 ];
 
-function getAvailableAssistant<Assistant>(arr: Assistant[]): Assistant {
-  const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex];
+function getAvailableAssistant(assistantList: Assistant[]): Assistant | null {
+  const availableAssistants = assistantList.filter(
+    (assistant) => assistant.isAvailable
+  );
+
+  if (availableAssistants.length === 0) {
+    return null;
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableAssistants.length);
+
+  return availableAssistants[randomIndex];
 }
 
 router.get('/', (req: Request, res: Response) => {
