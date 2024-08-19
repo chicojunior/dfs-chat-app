@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express';
 import { Assistant } from '../model/assistant';
 
 const router = Router();
-let assistants: Assistant[] = [
+const assistants: Assistant[] = [
   { id: 1, name: 'Bob', isAvailable: true },
   { id: 2, name: 'Alice', isAvailable: false },
   { id: 3, name: 'John', isAvailable: true },
