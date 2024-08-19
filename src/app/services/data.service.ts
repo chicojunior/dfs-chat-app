@@ -8,7 +8,11 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  fetchData(): Observable<any> {
+  getAssistants(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/assistants');
+  }
+
+  getTopics(): Observable<any> {
+    return this.http.get<any>('http://localhost:3000/topics');
   }
 }

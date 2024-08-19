@@ -1,4 +1,22 @@
+<img [src]="avatarImage" alt="assistant avatar">
 <h2 mat-dialog-title>{{ title }}</h2>
 <mat-dialog-content>
-  <p>{{ assistant | json }}</p>
+  <p>Hello, my name is <strong>{{ data.assistant.name }}</strong> and I'm your customer support, ready to answer your
+    questions
+  </p>
+
+  <p>Here is a list of topics I can help you.</p>
+
+  <div>
+    @if (topics() !== null) {
+    <ul>
+      @for (topic of topics(); track topic.id) {
+      <li>{{ topic.name }}</li>
+      }
+    </ul>
+    } @else {
+    <mat-spinner></mat-spinner>
+    }
+  </div>
+
 </mat-dialog-content>

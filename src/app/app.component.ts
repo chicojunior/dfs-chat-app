@@ -23,10 +23,10 @@ export class AppComponent {
 
   openDialog() {
     this.isLoading = true;
-    this.dataService.fetchData().subscribe((res) => {
+    this.dataService.getAssistants().subscribe((assistant) => {
       this.dialog.open(DialogCustomerServiceComponent, {
         data: {
-          assistant: res,
+          assistant,
         },
       });
 

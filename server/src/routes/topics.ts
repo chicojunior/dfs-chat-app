@@ -4,11 +4,11 @@ import { mockData } from '../data/mockdata';
 
 const router = express.Router();
 
-router.get('/topics', (req, res) => {
+router.get('/', (req, res) => {
   res.json(mockData);
 });
 
-router.get('/topics/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id, 10);
   const topic = mockData.find((topic: Topic) => topic.id === id);
 

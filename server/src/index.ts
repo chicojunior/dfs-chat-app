@@ -8,10 +8,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
-app.use('/api/assistants', assistantRoutes);
-app.use('/api/topics', topicRoutes);
+app.use('/assistants', assistantRoutes);
+app.use('/topics', topicRoutes);
 
-app.get('/api', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello DFS!');
 });
 
