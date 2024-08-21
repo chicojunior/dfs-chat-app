@@ -1,27 +1,44 @@
 @if (topics() !== null) {
 <div class="topic-list">
   @for (topic of topics(); track topic.id) {
-  <button
-    mat-flat-button
-    (click)="selectTopic(topic)"
-    [class.selected]="getSelectedTopicId() === topic.id"
-  >
-    @if (getSelectedTopicId() === topic.id) {
+  <button mat-flat-button class="topic-button" (click)="selectTopic(topic)">
+    @if (getSelectedTopicId('topic') === topic.id) {
     <mat-icon>check</mat-icon>
     }
     {{ topic.name }}
   </button>
-
   }
 </div>
 
-@if (getSelectedTopicId()) {
+@if (getSelectedTopicId('topic')) {
 <div class="topic-list">
   @for (subtopic of getSubTopics(); track subtopic.id) {
-  <button mat-stroked-button (click)="selectTopic(subtopic)">
+  <button
+    mat-flat-button
+    class="subtopic-button"
+    (click)="selectSubTopic(subtopic)"
+  >
+    @if (getSelectedTopicId('subtopic') === subtopic.id) {
+    <mat-icon>check</mat-icon>
+    }
     {{ subtopic.name }}
   </button>
   }
+</div>
+} @if (getSelectedTopicId('subtopic')) {
+<div class="topic-list">
+  @for (item of getItems(); track item.id) {
+  <button mat-stroked-button (click)="selectItem(item)">
+    {{ item.name }}
+  </button>
+
+  }
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ selectedItem.name }}</mat-card-title>
+      <mat-card-subtitle>{{ selectedItem.description }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
 </div>
 } } @else {
 <mat-spinner></mat-spinner>

@@ -4,19 +4,17 @@
 }
 
 button {
-  color: white;
-  margin: 0 0.5rem;
-}
-
-.selected {
-  background-color: #4caf50;
-  color: white;
+  margin: 0.5rem 0.5rem;
 }
 
 .topic-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 1rem;
+}
+
+.topic-button {
+  background-color: #03045e;
+}
+
+.subtopic-button {
+  background-color: #0077b6;
 }

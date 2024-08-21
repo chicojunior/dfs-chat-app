@@ -3,22 +3,39 @@ import { DataService } from '../../services/data.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Subtopic, Topic } from '../../model/chat-app.model';
+import { MatCardModule } from '@angular/material/card';
+import { Item, Subtopic, Topic } from '../../model/chat-app.model';
 
 @Component({
   selector: 'app-topic-list',
   standalone: true,
-  imports: [MatProgressSpinnerModule, MatIconModule, MatButtonModule],
+  imports: [
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+  ],
   templateUrl: './topic-list.component.html',
   styleUrl: './topic-list.component.scss',
 })
 export class TopicListComponent {
   topics = signal<Topic[]>([]);
-  selectedTopic = signal<Topic>({
+  selectedTopic: Topic = {
     id: 0,
     name: '',
     subtopics: [],
-  });
+  };
+  selectedSubtopic: Subtopic = {
+    id: 0,
+    name: '',
+    items: [],
+  };
+  selectedItem: Item = {
+    id: 0,
+    name: '',
+    description: '',
+  };
+  showDescription = false;
 
   constructor(private dataService: DataService) {}
 
@@ -28,15 +45,39 @@ export class TopicListComponent {
     });
   }
 
-  selectTopic(topic: any) {
-    this.selectedTopic.set(topic);
+  selectTopic(topic: Topic): void {
+    this.selectedTopic = topic;
+    this.selectedSubtopic = {
+      id: 0,
+      name: '',
+      items: [],
+    };
   }
 
-  getSelectedTopicId(): number {
-    return this.selectedTopic().id;
+  selectSubTopic(subtopic: Subtopic): void {
+    this.selectedSubtopic = subtopic;
+    this.selectedItem = {
+      id: 0,
+      name: '',
+      description: '',
+    };
+    this.showDescription = false;
+  }
+
+  getSelectedTopicId(type: string): number {
+    return type === 'topic' ? this.selectedTopic.id : this.selectedSubtopic.id;
   }
 
   getSubTopics(): Subtopic[] {
-    return this.selectedTopic().subtopics;
+    return this.selectedTopic.subtopics;
+  }
+
+  getItems(): Item[] {
+    return this.selectedSubtopic.items;
+  }
+
+  selectItem(item: Item): void {
+    this.selectedItem = item;
+    this.showDescription = true;
   }
 }
