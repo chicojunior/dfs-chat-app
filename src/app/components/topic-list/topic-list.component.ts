@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class TopicListComponent {
   topics = signal<any>(null);
-  selectedTopicId = signal<string | null>(null);
+  selectedTopic = signal<any>(null);
 
   constructor(private dataService: DataService) {}
 
@@ -24,6 +24,20 @@ export class TopicListComponent {
   }
 
   selectTopic(topic: any) {
-    this.selectedTopicId.set(topic.id);
+    this.selectedTopic.set(topic);
+  }
+
+  // Method to get the ID of the selected topic
+  getSelectedTopicId(): number | null {
+    return this.selectedTopic().id || null;
+  }
+
+  getSubTopics(): any | null {
+    return this.selectedTopic().subtopics || null;
+  }
+
+  // Track by function to optimize *ngFor rendering
+  trackByTopicId(index: number, topic: any): number {
+    return topic.id;
   }
 }

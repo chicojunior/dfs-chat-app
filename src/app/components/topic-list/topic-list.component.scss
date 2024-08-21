@@ -1,3 +1,12 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  color: white;
+}
+
 .selected {
   background-color: #4caf50;
   color: white;
@@ -5,4 +14,7 @@
 
 .topic-list {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }

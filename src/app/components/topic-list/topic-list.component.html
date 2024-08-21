@@ -4,15 +4,25 @@
   <button
     mat-flat-button
     (click)="selectTopic(topic)"
-    [class.selected]="selectedTopicId() === topic.id"
+    [class.selected]="getSelectedTopicId() === topic.id"
   >
-    @if (selectedTopicId() === topic.id) {
+    @if (getSelectedTopicId() === topic.id) {
     <mat-icon>check</mat-icon>
     }
     {{ topic.name }}
   </button>
+
   }
 </div>
-} @else {
+
+@if (getSelectedTopicId()) {
+<div class="topic-list">
+  @for (subtopic of getSubTopics(); track $index) {
+  <button mat-stroked-button (click)="selectTopic(subtopic)">
+    {{ subtopic.name }}
+  </button>
+  }
+</div>
+} } @else {
 <mat-spinner></mat-spinner>
 }
