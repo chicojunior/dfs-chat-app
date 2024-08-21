@@ -3,6 +3,7 @@ import { DataService } from '../../services/data.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Subtopic, Topic } from '../../model/chat-app.model';
 
 @Component({
   selector: 'app-topic-list',
@@ -12,8 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './topic-list.component.scss',
 })
 export class TopicListComponent {
-  topics = signal<any>(null);
-  selectedTopic = signal<any>(null);
+  topics = signal<Topic[]>([]);
+  selectedTopic = signal<Topic>({
+    id: 0,
+    name: '',
+    subtopics: [],
+  });
 
   constructor(private dataService: DataService) {}
 
@@ -27,17 +32,11 @@ export class TopicListComponent {
     this.selectedTopic.set(topic);
   }
 
-  // Method to get the ID of the selected topic
-  getSelectedTopicId(): number | null {
-    return this.selectedTopic().id || null;
+  getSelectedTopicId(): number {
+    return this.selectedTopic().id;
   }
 
-  getSubTopics(): any | null {
-    return this.selectedTopic().subtopics || null;
-  }
-
-  // Track by function to optimize *ngFor rendering
-  trackByTopicId(index: number, topic: any): number {
-    return topic.id;
+  getSubTopics(): Subtopic[] {
+    return this.selectedTopic().subtopics;
   }
 }

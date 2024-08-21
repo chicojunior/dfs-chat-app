@@ -17,7 +17,7 @@
 
 @if (getSelectedTopicId()) {
 <div class="topic-list">
-  @for (subtopic of getSubTopics(); track $index) {
+  @for (subtopic of getSubTopics(); track subtopic.id) {
   <button mat-stroked-button (click)="selectTopic(subtopic)">
     {{ subtopic.name }}
   </button>

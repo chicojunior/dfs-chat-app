@@ -5,6 +5,7 @@
 
 button {
   color: white;
+  margin: 0 0.5rem;
 }
 
 .selected {
@@ -15,6 +16,7 @@ button {
 .topic-list {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 1rem;
 }
