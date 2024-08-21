@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { TopicListComponent } from '../topic-list/topic-list.component';
+import { Assistant } from '../../model/chat-app.model';
 
 @Component({
   selector: 'app-dialog-customer-service',
@@ -10,9 +11,9 @@ import { TopicListComponent } from '../topic-list/topic-list.component';
   styleUrl: './dialog-customer-service.component.scss',
 })
 export class DialogCustomerServiceComponent implements OnInit {
-  data = inject(MAT_DIALOG_DATA);
   title = 'DSF Chat';
   avatarImage: string | undefined;
+  assistantName: string;
 
   private images: string[] = [
     'assets/images/bear.png',
@@ -22,6 +23,10 @@ export class DialogCustomerServiceComponent implements OnInit {
     'assets/images/meerkat.png',
     'assets/images/rabbit.png',
   ];
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { assistant: Assistant }) {
+    this.assistantName = data.assistant.name;
+  }
 
   ngOnInit(): void {
     this.setRandomAvatar();
