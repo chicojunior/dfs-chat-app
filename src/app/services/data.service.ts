@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Assistant, Topic } from '../model/chat-app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,11 +9,11 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getAssistants(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/assistants');
+  getAssistants(): Observable<Assistant> {
+    return this.http.get<Assistant>('http://localhost:3000/assistants');
   }
 
-  getTopics(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/topics');
+  getTopics(): Observable<Topic[]> {
+    return this.http.get<Topic[]>('http://localhost:3000/topics');
   }
 }

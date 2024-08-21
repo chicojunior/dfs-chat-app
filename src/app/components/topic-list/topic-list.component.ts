@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +18,7 @@ import { Item, Subtopic, Topic } from '../../model/chat-app.model';
   templateUrl: './topic-list.component.html',
   styleUrl: './topic-list.component.scss',
 })
-export class TopicListComponent {
+export class TopicListComponent implements OnInit {
   topics = signal<Topic[]>([]);
   selectedTopic: Topic = {
     id: 0,

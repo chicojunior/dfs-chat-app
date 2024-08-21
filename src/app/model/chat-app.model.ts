@@ -1,3 +1,8 @@
+export interface Assistant {
+  id: number;
+  name: string;
+  isAvailable: boolean;
+}
 export interface Item {
   id: number;
   name: string;
