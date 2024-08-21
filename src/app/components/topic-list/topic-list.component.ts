@@ -64,8 +64,16 @@ export class TopicListComponent {
     this.showDescription = false;
   }
 
-  getSelectedTopicId(type: string): number {
-    return type === 'topic' ? this.selectedTopic.id : this.selectedSubtopic.id;
+  getSelectedId(type: string): number {
+    if (type === 'topic') {
+      return this.selectedTopic.id;
+    } else if (type === 'subtopic') {
+      return this.selectedSubtopic.id;
+    } else if (type === 'item') {
+      return this.selectedItem.id;
+    } else {
+      throw new Error(`Invalid type: ${type}`);
+    }
   }
 
   getSubTopics(): Subtopic[] {
