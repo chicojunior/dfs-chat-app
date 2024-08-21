@@ -1,22 +1,11 @@
 import express from 'express';
-import { Topic } from '../model/topic';
-import { mockData } from '../data/mockdata';
+
+import { topics } from '../data/mockdata';
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.json(mockData);
-});
-
-router.get('/:id', (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const topic = mockData.find((topic: Topic) => topic.id === id);
-
-  if (topic) {
-    res.json(topic);
-  } else {
-    res.status(404).send('Topic not found');
-  }
+  res.json(topics);
 });
 
 export default router;

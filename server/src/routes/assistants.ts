@@ -1,13 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { Assistant } from '../model/assistant';
 
+import { assistants } from '../data/mockdata';
+
 const router = Router();
-const assistants: Assistant[] = [
-  { id: 1, name: 'Bob', isAvailable: true },
-  { id: 2, name: 'Alice', isAvailable: false },
-  { id: 3, name: 'John', isAvailable: true },
-  { id: 4, name: 'Eva', isAvailable: true },
-];
 
 function getAvailableAssistant(assistantList: Assistant[]): Assistant | null {
   const availableAssistants = assistantList.filter(

@@ -1,6 +1,14 @@
+import { Assistant } from '../model/assistant';
 import { Topic } from '../model/topic';
 
-export const mockData: Topic[] = [
+export const assistants: Assistant[] = [
+  { id: 1, name: 'Bob', isAvailable: true },
+  { id: 2, name: 'Alice', isAvailable: false },
+  { id: 3, name: 'John', isAvailable: true },
+  { id: 4, name: 'Eva', isAvailable: true },
+];
+
+export const topics: Topic[] = [
   {
     id: 1,
     name: 'Football',

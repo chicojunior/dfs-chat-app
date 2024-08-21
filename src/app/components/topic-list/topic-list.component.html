@@ -1,0 +1,18 @@
+@if (topics() !== null) {
+<div class="topic-list">
+  @for (topic of topics(); track topic.id) {
+  <button
+    mat-flat-button
+    (click)="selectTopic(topic)"
+    [class.selected]="selectedTopicId() === topic.id"
+  >
+    @if (selectedTopicId() === topic.id) {
+    <mat-icon>check</mat-icon>
+    }
+    {{ topic.name }}
+  </button>
+  }
+</div>
+} @else {
+<mat-spinner></mat-spinner>
+}

@@ -1,13 +1,11 @@
-import { AsyncPipe, JsonPipe } from '@angular/common';
-import { DataService } from './../../services/data.service';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TopicListComponent } from '../topic-list/topic-list.component';
 
 @Component({
   selector: 'app-dialog-customer-service',
   standalone: true,
-  imports: [MatDialogModule, MatProgressSpinnerModule, AsyncPipe, JsonPipe],
+  imports: [MatDialogModule, TopicListComponent],
   templateUrl: './dialog-customer-service.component.html',
   styleUrl: './dialog-customer-service.component.scss',
 })
@@ -15,8 +13,6 @@ export class DialogCustomerServiceComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA);
   title = 'DSF Chat';
   avatarImage: string | undefined;
-  // topics: any[] = [];
-  topics = signal<any>(null);
 
   private images: string[] = [
     'assets/images/bear.png',
@@ -27,15 +23,8 @@ export class DialogCustomerServiceComponent implements OnInit {
     'assets/images/rabbit.png',
   ];
 
-  constructor(private dataService: DataService) {}
-
   ngOnInit(): void {
     this.setRandomAvatar();
-    this.dataService.getTopics().subscribe((res) => {
-      console.log(res);
-      this.topics.set(res);
-      // this.topics = res;
-    });
   }
 
   private setRandomAvatar(): void {
