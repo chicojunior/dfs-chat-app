@@ -1,3 +1,5 @@
+![CI Pipeline](https://github.com/chicojunior/dfs-chat-app/actions/workflows/ci.yml/badge.svg)
+
 # DfsChatApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
