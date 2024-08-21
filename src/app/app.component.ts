@@ -17,9 +17,8 @@ export class AppComponent {
   title = 'DFS Chat';
   dialog = inject(MatDialog);
   isLoading = false;
-  constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {}
+  constructor(private dataService: DataService) {}
 
   openDialog() {
     this.isLoading = true;
