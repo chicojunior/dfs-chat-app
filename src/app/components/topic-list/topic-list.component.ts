@@ -1,10 +1,11 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Item, Subtopic, Topic } from '../../model/chat-app.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-topic-list',
@@ -18,7 +19,9 @@ import { Item, Subtopic, Topic } from '../../model/chat-app.model';
   templateUrl: './topic-list.component.html',
   styleUrl: './topic-list.component.scss',
 })
-export class TopicListComponent implements OnInit {
+export class TopicListComponent implements OnInit, OnDestroy {
+  private subscription = new Subscription();
+
   topics = signal<Topic[]>([]);
   selectedTopic: Topic = {
     id: 0,
@@ -40,9 +43,15 @@ export class TopicListComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getTopics().subscribe((res) => {
-      this.topics.set(res);
-    });
+    this.subscription.add(
+      this.dataService.getTopics().subscribe((res) => {
+        this.topics.set(res);
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   selectTopic(topic: Topic): void {
