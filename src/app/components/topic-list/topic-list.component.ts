@@ -64,6 +64,11 @@ export class TopicListComponent implements OnInit {
     this.showDescription = false;
   }
 
+  selectItem(item: Item): void {
+    this.selectedItem = item;
+    this.showDescription = true;
+  }
+
   getSelectedId(type: string): number {
     if (type === 'topic') {
       return this.selectedTopic.id;
@@ -82,10 +87,5 @@ export class TopicListComponent implements OnInit {
 
   getItems(): Item[] {
     return this.selectedSubtopic.items;
-  }
-
-  selectItem(item: Item): void {
-    this.selectedItem = item;
-    this.showDescription = true;
   }
 }
