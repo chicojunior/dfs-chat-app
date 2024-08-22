@@ -1,29 +1,71 @@
 ![CI Pipeline](https://github.com/chicojunior/dfs-chat-app/actions/workflows/ci.yml/badge.svg)
 
-# DfsChatApp
+# DFS Chat App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+Welcome to DFS Chat App! This project is the result of a technical challenge aimed at showcasing my front-end development skills.
 
-## Development server
+## Running locally
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Clone the project
 
-## Code scaffolding
+```bash
+  git clone https://github.com/chicojunior/dfs-chat-app
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Enter in the project main directory
 
-## Build
+```bash
+  cd dfs-chat-app
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Front-End
 
-## Running unit tests
+Install the front-end dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+  npm install
+```
 
-## Running end-to-end tests
+start the server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+  npm run start
+```
 
-## Further help
+## Back-End
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Enter in server directory
+
+```bash
+  cd server
+```
+
+Install the dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+## Running tests
+
+To run the tests, run the following command
+
+```bash
+  npm run test
+```
+
+## Stack
+
+**Front-end:** Angular, Typescript, SCSS, Jasmine
+
+**Back-end:** Node, Express
+
+## Author
+
+- [Francisco Vale](https://www.github.com/chicojunior)
